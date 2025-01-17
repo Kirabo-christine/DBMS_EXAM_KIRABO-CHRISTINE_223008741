@@ -1,0 +1,337 @@
+PART A.
+Q1;
+mysql> create table CLIENT_master (clientno int(10), NAME CHAR(10), Address char(10), city char(10),state char(10),bal_due int(10));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> insert into CLIENT_master values(1,'AGATESI','22ST','KIGALI','AFRICA',15000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CLIENT_master values(2,'GASARO','42ST','MUSANZE','RWANDA',10000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into CLIENT_master values(3,'LUCKY','20ST','RWAMAGANA','USA',20000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into CLIENT_master values(4,'SHEMA','15ST','MUHANGA','LA',30000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into CLIENT_master values(5,'TRESOR','76ST','HUYE','RWANDA',45000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from CLIENT_master;
++----------+---------+---------+-----------+--------+---------+
+| clientno | NAME    | Address | city      | state  | bal_due |
++----------+---------+---------+-----------+--------+---------+
+|        1 | AGATESI | 22ST    | KIGALI    | AFRICA |   15000 |
+|        2 | GASARO  | 42ST    | MUSANZE   | RWANDA |   10000 |
+|        3 | LUCKY   | 20ST    | RWAMAGANA | USA    |   20000 |
+|        4 | SHEMA   | 15ST    | MUHANGA   | LA     |   30000 |
+|        5 | TRESOR  | 76ST    | HUYE      | RWANDA |   45000 |
++----------+---------+---------+-----------+--------+---------+
+5 rows in set (0.00 sec)
+
+Q2;
+
+mysql> select NAME from CLIENT_master where bal_due>5000;
++---------+
+| NAME    |
++---------+
+| AGATESI |
+| GASARO  |
+| LUCKY   |
+| SHEMA   |
+| TRESOR  |
++---------+
+5 rows in set (0.00 sec)
+
+Q3;
+
+mysql> update CLIENT_master set clientno=123 where NAME='AGATESI';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from CLIENT_master;
++----------+---------+---------+-----------+--------+---------+
+| clientno | NAME    | Address | city      | state  | bal_due |
++----------+---------+---------+-----------+--------+---------+
+|      123 | AGATESI | 22ST    | KIGALI    | AFRICA |   15000 |
+|        2 | GASARO  | 42ST    | MUSANZE   | RWANDA |   10000 |
+|        3 | LUCKY   | 20ST    | RWAMAGANA | USA    |   20000 |
+|        4 | SHEMA   | 15ST    | MUHANGA   | LA     |   30000 |
+|        5 | TRESOR  | 76ST    | HUYE      | RWANDA |   45000 |
++----------+---------+---------+-----------+--------+---------+
+5 rows in set (0.00 sec)
+
+mysql> update CLIENT_master set bal_due=5100 where clientno=123;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from CLIENT_master;
++----------+---------+---------+-----------+--------+---------+
+| clientno | NAME    | Address | city      | state  | bal_due |
++----------+---------+---------+-----------+--------+---------+
+|      123 | AGATESI | 22ST    | KIGALI    | AFRICA |    5100 |
+|        2 | GASARO  | 42ST    | MUSANZE   | RWANDA |   10000 |
+|        3 | LUCKY   | 20ST    | RWAMAGANA | USA    |   20000 |
+|        4 | SHEMA   | 15ST    | MUHANGA   | LA     |   30000 |
+|        5 | TRESOR  | 76ST    | HUYE      | RWANDA |   45000 |
++----------+---------+---------+-----------+--------+---------+
+5 rows in set (0.00 sec)
+
+
+
+
+PART B;
+Q)6 A,B
+mysql> use EXAM;
+Database changed
+mysql> create table DEPARTMENTS (dept_name char(20), student_name char(10),dept_no int(10),dept_head char(10), dept_school char(10));
+Query OK, 0 rows affected, 1 warning (0.06 sec)
+
+mysql> insert into DEPARTMENTS values('BIT','Kirabo',123,'Kayijuka','Business');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into DEPARTMENTS values('BIT','Belyse',213,'Jenifer','Business');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create Table EMPLOYEES (emp_name char(20), emp_no int(10), emp_salary int(20),employ_id int(10),emp_location char(20));
+Query OK, 0 rows affected, 3 warnings (0.03 sec)
+
+mysql> insert into EMPLOYEES values ('Lucky',1,2000,223008741,'kigali');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into EMPLOYEES values ('Loy',2,35000,22300654259,'Musanze');
+Query OK, 1 row affected, 1 warning (0.02 sec)
+
+mysql> insert into EMPLOYEES values ('Sandra',3,40000,2230123976,'Rwamagana');
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into EMPLOYEES values ('Sandra',3,40000,2230123976,'Rwamagana');
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+mysql>
+mysql> insert into EMPLOYEES values ('Anaise',5,60000,223097866,'Muhanga');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into EMPLOYEES values ('Divine',6,80000,223007689,'Huye');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from EMPLOYEE;
+ERROR 1146 (42S02): Table 'exam.employee' doesn't exist
+mysql> select * from EMPLOYEES;
++----------+--------+------------+------------+--------------+
+| emp_name | emp_no | emp_salary | employ_id  | emp_location |
++----------+--------+------------+------------+--------------+
+| Lucky    |      1 |       2000 |  223008741 | kigali       |
+| Loy      |      2 |      35000 | 2147483647 | Musanze      |
+| Sandra   |      3 |      40000 | 2147483647 | Rwamagana    |
+| Sandra   |      3 |      40000 | 2147483647 | Rwamagana    |
+| Anaise   |      5 |      60000 |  223097866 | Muhanga      |
+| Divine   |      6 |      80000 |  223007689 | Huye         |
++----------+--------+------------+------------+--------------+
+6 rows in set (0.00 sec)
+
+
+Q7,1
+
+mysql> select * from STUDENT;
++------------+----------------+--------+------+------------+
+| student_ID | full_name      | gender | age  | department |
++------------+----------------+--------+------+------------+
+|       2452 | Agatesi Esther | F      |   22 | business   |
+|       2551 | SHEMA ARSENE   | M      |   21 | IT         |
++------------+----------------+--------+------+------------+
+2 rows in set (0.00 sec)
+
+Q7,2
+mysql> select full_name from STUDENT where gender='F';
++----------------+
+| full_name      |
++----------------+
+| Agatesi Esther |
++----------------+
+1 row in set (0.00 sec)
+
+Q7,3
+
+mysql> select full_name from STUDENT where gender='M';
++--------------+
+| full_name    |
++--------------+
+| SHEMA ARSENE |
++--------------+
+1 row in set (0.00 sec)
+
+Q7,4
+mysql> create table STUDENT (student_ID int(5), full_name varchar(25), gender varchar(6), age int(2), department varchar(30));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> insert into STUDENT values(2452, 'Agatesi Esther', 'F',22,'business');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into STUDENT values(2551, 'SHEMA ARSENE', 'M',21,'IT');
+Query OK, 1 row affected (0.00 sec)
+
+Q7,5
+
+mysql> delete from student where age<20;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from STUDENT;
++------------+----------------+--------+------+------------+
+| student_ID | full_name      | gender | age  | department |
++------------+----------------+--------+------+------------+
+|       2452 | Agatesi Esther | F      |   22 | business   |
+|       2551 | SHEMA ARSENE   | M      |   21 | IT         |
++------------+----------------+--------+------+------------+
+2 rows in set (0.00 sec)
+
+
+PART C
+Q8, 2;
+
+mysql> select * from Account;
++-------+-----------+----------+--------+
+| accid | accnumber | typeid   | custid |
++-------+-----------+----------+--------+
+|    24 |  12345678 | saving   |    101 |
+|    25 |   9876543 | Ordinary |    102 |
++-------+-----------+----------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from Customer;
++--------+-----------+---------+--------+----------------+--------------+------------+
+| custid | FName     | LName   | Gender | Marital_status | Phone_number | email      |
++--------+-----------+---------+--------+----------------+--------------+------------+
+|    101 | Agatesi   | Esther  | F      | Singl          |    788709975 | esther@gma |
+|    102 | Twahirwa  | Julius  | M      | Marri          |    788597019 | julius@gma |
+|    103 | Murara    | Lucky   | M      | Taken          |    790786542 | lucky@gmai |
+|    104 | Iribagiza | Benitha | F      | Taken          |    788421342 | benitha@gm |
++--------+-----------+---------+--------+----------------+--------------+------------+
+4 rows in set (0.00 sec)
+Q8,3
+
+mysql> select accnumber,typeid from Account;
++-----------+----------+
+| accnumber | typeid   |
++-----------+----------+
+|  12345678 | saving   |
+|   9876543 | Ordinary |
++-----------+----------+
+2 rows in set (0.00 sec)
+
+Q8,5
+
+mysql> select * from Customer where Gender='F';
++--------+-----------+---------+--------+----------------+--------------+------------+
+| custid | FName     | LName   | Gender | Marital_status | Phone_number | email      |
++--------+-----------+---------+--------+----------------+--------------+------------+
+|    101 | Agatesi   | Esther  | F      | Singl          |    788709975 | esther@gma |
+|    104 | Iribagiza | Benitha | F      | Taken          |    788421342 | benitha@gm |
++--------+-----------+---------+--------+----------------+--------------+------------+
+2 rows in set (0.00 sec)
+
+Q8,10
+
+mysql> select * from Customer where Marital_status='Marri';
++--------+----------+--------+--------+----------------+--------------+------------+
+| custid | FName    | LName  | Gender | Marital_status | Phone_number | email      |
++--------+----------+--------+--------+----------------+--------------+------------+
+|    102 | Twahirwa | Julius | M      | Marri          |    788597019 | julius@gma |
++--------+----------+--------+--------+----------------+--------------+------------+
+1 row in set (0.00 sec)
+
+Q8,12
+
+mysql> create table Account(accid int(10),accnumber int(20),typeid char(10),custid int(10));
+Query OK, 0 rows affected, 3 warnings (0.01 sec)
+
+mysql> insert into Account values(24,12345678,'saving',101);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Account values(25,09876543,'Ordinary',102);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create table Customer (custid int(10),FName char(10),LName char(10),Gender char(5),Marital_status char(5),Phone_number int(10), email char(10));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> insert into Customer values(101,'Agatesi','Esther','F','Single',0788709975,'esther@gmail.com');
+Query OK, 1 row affected, 2 warnings (0.02 sec)
+
+mysql> insert into Customer values(102,'Twahirwa','Julius','M','Married',0788597019,'julius@gmail.com');
+Query OK, 1 row affected, 2 warnings (0.00 sec)
+
+mysql> insert into Customer values(103,'Murara','Lucky','M','Taken',0790786542,'lucky@gmail.com');
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into Customer values(104,'Iribagiza','Benitha','F','Taken',0788421342,'benitha@gmail.com');
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+Q8,17
+mysql> DROP table child;
+Query OK, 0 rows affected (0.02 sec)
+
+
+Q9,A
+
+mysql> select * from EMPLOYEES;
++-------------+------------+-----------+------------------+--------------+------------+--------+--------+----------------+------------+---------------+
+| EMPLOYEE_id | First_name | Last_name | Email            | Phone_number | Hire_date  | job_id | salary | commission_pct | manager_id | department_id |
++-------------+------------+-----------+------------------+--------------+------------+--------+--------+----------------+------------+---------------+
+|        2010 | Agatesi    | Esther    | esther@gmail.com |    788709975 | 0.00049382 |     20 | 100000 |             10 |        100 |            60 |
+|        2020 | Gasaro     | Cynthia   | gasaro@gmail.com |    785970194 | 0.00024691 |     20 | 100000 |             10 |        100 |            60 |
+|        2030 | Ineza      | Divine    | divine@gmail.com |    798756341 | 0.02000000 |     30 | 200000 |             12 |        200 |            70 |
++-------------+------------+-----------+------------------+--------------+------------+--------+--------+----------------+------------+---------------+
+3 rows in set (0.00 sec)
+
+Q9,B
+
+mysql> select First_name,Last_name from EMPLOYEES where manager_id=100;
++------------+-----------+
+| First_name | Last_name |
++------------+-----------+
+| Agatesi    | Esther    |
+| Gasaro     | Cynthia   |
++------------+-----------+
+2 rows in set (0.00 sec)
+
+Q9,C
+
+mysql> select First_name,Last_name from EMPLOYEES where salary>=4800;
++------------+-----------+
+| First_name | Last_name |
++------------+-----------+
+| Agatesi    | Esther    |
+| Gasaro     | Cynthia   |
+| Ineza      | Divine    |
++------------+-----------+
+3 rows in set (0.00 sec)
+
+Q9,D
+mysql> select Last_name from EMPLOYEES where Last_name='AUSTIN';
+Empty set (0.00 sec)
+
+Q9,E
+
+
+mysql> select First_name,Last_name from Employees where department_id=60;
++------------+-----------+
+| First_name | Last_name |
++------------+-----------+
+| Agatesi    | Esther    |
+| Gasaro     | Cynthia   |
++------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select First_name,Last_name from Employees where department_id=70;
++------------+-----------+
+| First_name | Last_name |
++------------+-----------+
+| Ineza      | Divine    |
++------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> select First_name,Last_name from Employees where department_id=80;
+Empty set (0.00 sec)
+
+
